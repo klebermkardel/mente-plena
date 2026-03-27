@@ -1,7 +1,8 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Sobre from './components/Sobre'
-import Servicos from './components/Servicos' // Importe aqui
+import Servicos from './components/Servicos'
+import Equipe from './components/Equipe' // Importe a equipe
 
 export default function App() {
   return (
@@ -9,7 +10,8 @@ export default function App() {
       <Navbar />
       <Hero />
       <Sobre />
-      <Servicos /> {/* Adicione aqui */}
+      <Servicos />
+      <Equipe /> {/* Adicione aqui */}
     </div>
   )
 }
