@@ -1,9 +1,33 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Hero() {
   const ref = useRef(null)
+  const [proximoHorario, setProximoHorario] = useState('')
 
   useEffect(() => {
+    // 1. Lógica para calcular o horário dinâmico
+    const calcularHorario = () => {
+      const agora = new Date()
+      const horaAtual = agora.getHours()
+      
+      // Se for antes das 8h, o primeiro horário é hoje às 8h
+      if (horaAtual < 8) {
+        setProximoHorario('Hoje, 08h — Online')
+      } 
+      // Se estiver entre 8h e 19h (ainda tem horários hoje)
+      else if (horaAtual >= 8 && horaAtual < 20) {
+        const proxima = horaAtual + 1
+        setProximoHorario(`Hoje, ${proxima}h — Online`)
+      } 
+      // Se for 20h ou mais, só amanhã às 8h
+      else {
+        setProximoHorario('Amanhã, 08h — Online')
+      }
+    }
+
+    calcularHorario()
+
+    // 2. Sua animação reveal original
     const els = ref.current?.querySelectorAll('.reveal')
     els?.forEach((el, i) => {
       setTimeout(() => {
@@ -18,16 +42,17 @@ export default function Hero() {
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-cream-100 via-cream-50 to-sage-50"
     >
-      {/* Blobs decorativos */}
+      {/* ... Blobs decorativos (Mantenha igual ao seu) ... */}
       <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-sage-100 opacity-50 blur-3xl animate-pulse-soft" />
       <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-cream-300 opacity-40 blur-3xl animate-pulse-soft" />
       <div className="absolute top-1/2 left-1/3 w-48 h-48 rounded-full bg-sage-200 opacity-30 blur-2xl animate-float" />
 
       <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-20 grid md:grid-cols-2 gap-16 items-center">
 
-        {/* Coluna esquerda — texto */}
+        {/* Coluna esquerda — texto (Mantenha igual ao seu) */}
         <div className="space-y-8">
-          <div className="reveal opacity-0 translate-y-6 transition-all duration-700">
+           {/* ... conteúdo da esquerda ... */}
+           <div className="reveal opacity-0 translate-y-6 transition-all duration-700">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-sage-100 text-sage-600 text-xs font-body tracking-widest uppercase rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse-soft" />
               Psicologia Clínica
@@ -60,7 +85,6 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Stats */}
           <div className="reveal opacity-0 translate-y-6 transition-all duration-700 flex gap-8 pt-4 border-t border-cream-300">
             {[
               { num: '500+', label: 'Pacientes atendidos' },
@@ -77,6 +101,7 @@ export default function Hero() {
 
         {/* Coluna direita — card visual */}
         <div className="reveal opacity-0 translate-y-6 transition-all duration-700 relative">
+          {/* ... SVG e Card da Dra. Ana (Mantenha igual ao seu) ... */}
           <div className="relative rounded-3xl overflow-hidden bg-sage-200 aspect-[4/5] max-w-sm mx-auto shadow-2xl shadow-sage-200">
             <div className="absolute inset-0 bg-gradient-to-b from-sage-300 to-sage-500" />
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
@@ -93,23 +118,26 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Card flutuante — próximo horário */}
+          {/* CARD FLUTUANTE ATUALIZADO */}
           <div className="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float">
             <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 text-lg">🗓</div>
             <div>
               <div className="font-body text-xs text-sage-400">Próximo horário</div>
-              <div className="font-body text-sm font-medium text-sage-800">Hoje, 15h — Online</div>
+              <div className="font-body text-sm font-medium text-sage-800">
+                {proximoHorario || 'Carregando...'}
+              </div>
             </div>
           </div>
 
-          {/* Card flutuante — avaliação */}
+          {/* ... Avaliação ★★★★★ ... */}
           <div className="absolute -top-4 -right-4 md:-right-6 bg-white rounded-2xl shadow-xl p-3 flex items-center gap-2 animate-float">
             <span className="text-amber-400 text-sm">★★★★★</span>
             <span className="font-body text-xs text-sage-700 font-medium">5.0</span>
           </div>
         </div>
       </div>
-
+      
+      {/* ... Scroll bounce ... */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
         <span className="font-body text-xs text-sage-400 tracking-widest uppercase">scroll</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-sage-400">
