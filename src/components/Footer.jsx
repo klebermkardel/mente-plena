@@ -39,21 +39,31 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Localização */}
+          {/* Localização com Mapa Original */}
           <div className="md:col-span-1.5">
             <h4 className="font-display text-lg mb-6 text-warm-200">Onde estamos</h4>
             <div className="space-y-4 font-body text-sm text-sage-300">
               <p className="flex items-start gap-3">
-                <span className="text-warm-400">📍</span>
+                <span className="text-warm-400 text-base">📍</span>
                 Av. Paulista, 1000 - Bela Vista<br />São Paulo - SP, 01310-100
               </p>
               <p className="flex items-center gap-3">
-                <span className="text-warm-400">🕒</span>
+                <span className="text-warm-400 text-base">🕒</span>
                 Seg - Sex: 08:00 às 20:00
               </p>
+              
+              {/* Container do Mapa com Cores Originais */}
               <div className="pt-2">
-                <div className="w-full h-24 rounded-2xl bg-sage-800 border border-sage-700 overflow-hidden flex items-center justify-center text-[10px] uppercase tracking-widest text-sage-600 font-bold">
-                  Mapa Interativo
+                <div className="w-full h-36 rounded-2xl bg-sage-800 border-2 border-sage-800 overflow-hidden relative shadow-lg">
+                  <iframe 
+                    title="Mapa Mente Plena"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1973347913495!2d-46.65217608502224!3d-23.561349184682054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da173775%3A0x4a608149806e232c!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1648000000000!5m2!1spt-BR!2sbr" 
+                    className="w-full h-full"
+                    style={{ border: 0 }}
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
