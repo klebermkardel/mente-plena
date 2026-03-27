@@ -3,7 +3,8 @@ import Hero from './components/Hero'
 import Sobre from './components/Sobre'
 import Servicos from './components/Servicos'
 import Equipe from './components/Equipe'
-import Depoimentos from './components/Depoimentos' // Adicione aqui
+import Depoimentos from './components/Depoimentos'
+import Contato from './components/Contato' // Importe o contato
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
       <Sobre />
       <Servicos />
       <Equipe />
-      <Depoimentos /> {/* Adicione aqui */}
+      <Depoimentos />
+      <Contato />
     </div>
   )
 }
